@@ -57,7 +57,7 @@ rule bam_count:
 rule RPKM:
 	input:
 		bamstat = config['path']+'/stat/bamqc_stat.tsv',
-		cnt = 'count/{sample}.cnt'
+		['count/{sample}.cnt'.format(sample=x) for x in config['samples']]
 	output:
 		'table/virus_expression_RPKM.tsv'
 	params:
