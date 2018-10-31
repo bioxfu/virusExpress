@@ -1,5 +1,5 @@
 source activate gmatic
 
 if [ ! -d bam ]; then
-	mkdir bam table
+	mkdir bam table count
 fi

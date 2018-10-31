@@ -5,7 +5,7 @@ rule all:
 		expand('index/{viral}.fasta.1.ht2', viral=config['viral']),
 		expand('bam/{sample}.bam', sample=config['samples']),
 		expand('bam/{sample}.bam.bai', sample=config['samples']),
-		expand('bam/{sample}.bamqc', sample=config['samples']),
+		expand('count/{sample}.cnt', sample=config['samples']),
 
 rule build_index:
 	input:
@@ -42,15 +42,13 @@ rule bam_idx:
 	shell:
 		'{params.conda}/samtools index {input.bam} {output.bai}'
 
-rule bam_qc:
+rule bam_count:
 	input:
-		bam = 'bam/{sample}.bam'
+		bam = 'bam/{sample}.bam',
+		bai = 'bam/{sample}.bam.bai'
 	output:
-		bamqc_dir = 'bam/{sample}.bamqc',
-		bamqc_html = 'bam/{sample}.bamqc/qualimapReport.html'
+		'count/{sample}.cnt'
 	params:
-		cpu = config['cpu'],
 		conda = config['conda_path']
 	shell:
-		"{params.conda}/qualimap bamqc --java-mem-size=10G -nt {params.cpu} -bam {input.bam} -outdir {output.bamqc_dir}"
-
+		"{params.conda}/samtools idxstats {input.bam}|grep -v '*'|cut -f1-3 > {output}"
