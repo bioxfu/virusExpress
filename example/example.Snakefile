@@ -56,11 +56,11 @@ rule bam_count:
 
 rule RPKM:
 	input:
-		bamstat = config['path']+'/stat/bamqc_stat.tsv',
 		['count/{sample}.cnt'.format(sample=x) for x in config['samples']]
 	output:
 		'table/virus_expression_RPKM.tsv'
 	params:
+		bamstat = config['path']+'/stat/bamqc_stat.tsv',
 		Rscript = config['Rscript_path']
 	shell:
-		"{params.Rscript} script/RPKM.R {input.bamstat}"
+		"{params.Rscript} script/RPKM.R {params.bamstat}"
