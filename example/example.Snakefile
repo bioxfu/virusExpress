@@ -26,7 +26,7 @@ rule hisat2_PE:
 	params:
 		prefix = 'bam/{sample}',
 		cpu = config['cpu'],
-		index = "index/config['viral'].fasta",
+		index = 'index/'+config['viral']+'.fasta',
 		strandness_hisat2 = config['strandness_hisat2'],
 		conda = config['conda_path']		
 	shell:
