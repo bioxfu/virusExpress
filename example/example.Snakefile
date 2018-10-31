@@ -6,6 +6,7 @@ rule all:
 		expand('bam/{sample}.bam', sample=config['samples']),
 		expand('bam/{sample}.bam.bai', sample=config['samples']),
 		expand('count/{sample}.cnt', sample=config['samples']),
+		'table/virus_expression_RPKM.tsv'
 
 rule build_index:
 	input:
@@ -19,8 +20,8 @@ rule build_index:
 
 rule hisat2_PE:
 	input:
-		r1 = config['path']+'/{sample}_R1_paired.fastq.gz',
-		r2 = config['path']+'/{sample}_R2_paired.fastq.gz'
+		r1 = config['path']+'/clean/{sample}_R1_paired.fastq.gz',
+		r2 = config['path']+'/clean/{sample}_R2_paired.fastq.gz'
 	output:
 		bam = 'bam/{sample}.bam'
 	params:
@@ -52,3 +53,14 @@ rule bam_count:
 		conda = config['conda_path']
 	shell:
 		"{params.conda}/samtools idxstats {input.bam}|grep -v '*'|cut -f1-3 > {output}"
+
+rule RPKM:
+	input:
+		bamstat = config['path']+'/stat/bamqc_stat.tsv',
+		cnt = 'count/{sample}.cnt'
+	output:
+		'table/virus_expression_RPKM.tsv'
+	params:
+		Rscript = config['Rscript_path']
+	shell:
+		"{params.Rscript} script/RPKM.R {input.bamstat}"

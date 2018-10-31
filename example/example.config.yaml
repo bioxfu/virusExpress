@@ -1,6 +1,6 @@
 viral: viral
 
-path: /cluster/home/qjzheng/Project/RL0024_20181030/RNA-Seq/clean
+path: /cluster/home/qjzheng/Project/RL0024_20181030/RNA-Seq
 
 samples:
   - EV_2
