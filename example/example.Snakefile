@@ -11,7 +11,7 @@ rule build_index:
 	input:
 		'index/{viral}.fasta'
 	output:
-		'index/{viral}.1.ht2'
+		'index/{viral}.fasta.1.ht2'
 	params:
 		conda = config['conda_path']
 	shell:
