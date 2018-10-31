@@ -1,0 +1,22 @@
+viral: viral
+
+path: /cluster/home/qjzheng/Project/RL0024_20181030/RNA-Seq/clean
+
+samples:
+  - EV_2
+  - EV_3
+  - EV_4
+  - EV_6
+  - TYLCV_2
+  - TYLCV_3
+  - TYLCV_4
+  - TYLCV_6
+
+cpu: 30
+
+strandness_hisat2: RF ## R (SE); RF (PE)
+
+Rscript_path: /cluster/home/xfu/R/3.5.1/bin/Rscript
+
+conda_path: /cluster/home/xfu/miniconda2/envs/gmatic/bin
+
