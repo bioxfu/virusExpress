@@ -6,7 +6,8 @@ rule all:
 		expand('bam/{sample}.bam', sample=config['samples']),
 		expand('bam/{sample}.bam.bai', sample=config['samples']),
 		expand('count/{sample}.cnt', sample=config['samples']),
-		'table/virus_expression_RPKM.tsv'
+		'table/virus_expression_RPKM.tsv',
+		'table/virus_expression_RPM.tsv'
 
 rule build_index:
 	input:
