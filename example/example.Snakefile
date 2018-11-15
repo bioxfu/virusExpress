@@ -59,7 +59,8 @@ rule RPKM:
 	input:
 		['count/{sample}.cnt'.format(sample=x) for x in config['samples']]
 	output:
-		'table/virus_expression_RPKM.tsv'
+		'table/virus_expression_RPKM.tsv',
+		'table/virus_expression_RPM.tsv'
 	params:
 		bamstat = config['path']+'/stat/bamqc_stat.tsv',
 		Rscript = config['Rscript_path']
