@@ -59,4 +59,9 @@ unzip cgview.zip
 
 cp example/CGView.sh CGView.sh
 # edit CGView.sh and run
+
+# In order to draw the overlapped CDS on separate lines, you need to edit the xml file to add <featureSlot> in following section: 
+# <!-- GenBank or EMBL genes on strand forward in rf 1,2,3 -->
+# and 
+#<!-- GenBank or EMBL genes on strand reverse in rf 1,2,3 -->
 ```
