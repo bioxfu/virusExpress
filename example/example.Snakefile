@@ -5,8 +5,8 @@ rule all:
 		expand('index/{viral}.fasta.1.ht2', viral=config['viral']),
 		expand('bam/{sample}.bam', sample=config['samples']),
 		expand('bam/{sample}.bam.bai', sample=config['samples']),
-		expand('bam/{sample}.bam.cov.plus', sample=config['samples']),
-		expand('bam/{sample}.bam.cov.minus', sample=config['samples']),
+		expand('bam/{sample}.fwd.cov', sample=config['samples']),
+		expand('bam/{sample}.rev.cov', sample=config['samples']),
 		expand('count/{sample}.cnt', sample=config['samples']),
 		'table/virus_expression_RPKM.tsv',
 		'table/virus_expression_RPM.tsv'
@@ -46,16 +46,25 @@ rule bam_idx:
 	shell:
 		'{params.conda}/samtools index {input.bam} {output.bai}'
 
-rule bam_cov:
+rule bam_fwd_cov:
 	input:
 		bam = 'bam/{sample}.bam'
 	output:
-		cov_plus = 'bam/{sample}.bam.cov.plus',
-		cov_minus = 'bam/{sample}.bam.cov.minus'
+		cov = 'bam/{sample}.fwd.cov'
 	params:
 		conda = config['conda_path']
 	shell:
-		'{params.conda}/bedtools genomecov -ibam {input.bam} -d -strand + > {output.cov_plus}; {params.conda}/bedtools genomecov -ibam {input.bam} -d -strand - > {output.cov_minus}'
+		'{params.conda}/samtools view -hub -F 16 {input.bam}|samtools depth - > {output.cov}'
+
+rule bam_rev_cov:
+	input:
+		bam = 'bam/{sample}.bam'
+	output:
+		cov = 'bam/{sample}.rev.cov'
+	params:
+		conda = config['conda_path']
+	shell:
+		'{params.conda}/samtools view -hub -f 16 {input.bam}|samtools depth - > {output.cov}'
 
 rule bam_count:
 	input:
