@@ -31,7 +31,7 @@ with open(input2) as f:
 			else:
 				patch[int(start)-140+2781] = cnt
 
-tot = tot / 1000000
+tot = float(tot) / 1000000
 
 output = open(output_file, 'w')
 output.write('seqname\tsource\tfeature\tstart\tend\tscore\tstrand\tframe\n')
