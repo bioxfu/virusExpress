@@ -50,6 +50,9 @@ snakemake --unlock
 
 ### 8. Draw CGView figures
 ```
+# install BioPerl
+cpanm  Bio::SeqIO
+
 # install CGView
 # wget http://wishart.biology.ualberta.ca/cgview/application/cgview.zip
 unzip cgview.zip
