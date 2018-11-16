@@ -1,0 +1,170 @@
+LOCUS       AJ489258                2781 bp    DNA     circular VRL 21-APR-2009
+DEFINITION  Tomato yellow leaf curl virus-[Almeria] complete genome, isolate
+            Almeria.
+ACCESSION   AJ489258
+VERSION     AJ489258.1
+KEYWORDS    c2 gene; C2 protein; c3 gene; C3 protein; c4 gene; C4 protein; coat
+            protein; cp gene; precoat protein; rep gene; replication-associated
+            protein; v2 gene.
+SOURCE      Tomato yellow leaf curl virus-[Almeria]
+  ORGANISM  Tomato yellow leaf curl virus-[Almeria]
+            Viruses; ssDNA viruses; Geminiviridae; Begomovirus.
+REFERENCE   1
+  AUTHORS   Morilla,G., Janssen,D., Garcia-Andres,S., Moriones,E.,
+            Cuadrado,I.M. and Bejarano,E.R.
+  TITLE     Pepper (Capsicum annuum) Is a Dead-End Host for Tomato yellow leaf
+            curl virus
+  JOURNAL   Phytopathology 95 (9), 1089-1097 (2005)
+   PUBMED   18943307
+REFERENCE   2  (bases 1 to 2781)
+  AUTHORS   Morilla,G.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (04-JUN-2002) Morilla G., Departamento de Genetica,
+            Universidad de Malaga, 29071, Malaga, SPAIN
+FEATURES             Location/Qualifiers
+     source          1..2781
+                     /organism="Tomato yellow leaf curl virus-[Almeria]"
+                     /mol_type="genomic DNA"
+                     /isolate="Almeria"
+                     /host="Capsicum anuum"
+                     /db_xref="taxon:220938"
+                     /country="Spain:Almeria"
+     gene            155..505
+                     /gene="v2"
+     CDS             155..505
+                     /gene="v2"
+                     /function="movement"
+                     /codon_start=1
+                     /product="precoat protein"
+                     /protein_id="CAD33247.1"
+                     /db_xref="GOA:Q777L1"
+                     /db_xref="InterPro:IPR002511"
+                     /db_xref="InterPro:IPR005159"
+                     /db_xref="UniProtKB/TrEMBL:Q777L1"
+                     /translation="MWDPLLNEFPESVHGFRCMLAIKYLQSVEETYEPNTLGHDLIRD
+                     LISVVRARDYVEATRRYNHFHARLEGSPKAELRQPIQQPCCCPHCPRHKQATIMDVQA
+                     HVPKAQNIQNVSKP"
+     gene            315..1091
+                     /gene="cp"
+     CDS             315..1091
+                     /gene="cp"
+                     /function="coat protein"
+                     /codon_start=1
+                     /product="coat protein"
+                     /protein_id="CAD33248.1"
+                     /db_xref="GOA:Q8JJU0"
+                     /db_xref="InterPro:IPR000263"
+                     /db_xref="InterPro:IPR000650"
+                     /db_xref="UniProtKB/TrEMBL:Q8JJU0"
+                     /translation="MSKRPGDIIISTPVSKVRRRLNFDSPYSSRAAVPIVQGTNKRRS
+                     WTYRPMYRKPRIYRMYRSPDVPRGCEGPCKVQSYEQRDDIKHTGIVRCVSDVTRGSGI
+                     THRVGKRFCVKSIYFLGKVWMDENIKKQNHTNQVMFFLVRDRRPYGSSPMDFGQVFNM
+                     FDNEPSTATVKNDLRDRFQVMRKFHATVIGGPSGMKEQALVKRFFKINSHVTYNHQEA
+                     AKYENHTENALLLYMACTHASNPVYVTMKIRIYFYDSISN"
+     gene            complement(1088..1492)
+                     /gene="c3"
+     CDS             complement(1088..1492)
+                     /gene="c3"
+                     /codon_start=1
+                     /product="C3 protein"
+                     /protein_id="CAD33249.1"
+                     /db_xref="InterPro:IPR000657"
+                     /db_xref="UniProtKB/TrEMBL:Q8JJT9"
+                     /translation="MDSRTGELITAPQAENGVFIWEINNPLYFKITEHSQRPFLMNHD
+                     IISIQIRFNHNIRKVMGIHKCFLNFRIWTTLQPQTGHFLRVFRYEVLKYLDSLGVISI
+                     NNVIRAVDHVLYDVLENTINVTETHDIKYKFY"
+     gene            complement(1233..1640)
+                     /gene="c2"
+     CDS             complement(1233..1640)
+                     /gene="c2"
+                     /codon_start=1
+                     /product="C2 protein"
+                     /protein_id="CAD33250.1"
+                     /db_xref="GOA:Q8JJT8"
+                     /db_xref="InterPro:IPR000942"
+                     /db_xref="UniProtKB/TrEMBL:Q8JJT8"
+                     /translation="MQPSSPSTSHCSQVSIKVQHKIAKKKPIRRKRVDLDCGCSYYLH
+                     LNCNNHGFTHRGTHHCSSGREWRFYLGDKQSPLFQDNRTQPAAISNEPRHHFHSDKIQ
+                     PQHQEGNGDSQMFSQLPNLDDITASDWSFLKSI"
+     gene            complement(1549..2622)
+                     /gene="rep"
+     CDS             complement(1549..2622)
+                     /gene="rep"
+                     /codon_start=1
+                     /product="replication-associated protein"
+                     /protein_id="CAD33251.1"
+                     /db_xref="GOA:Q8JJT7"
+                     /db_xref="HSSP:1L5I"
+                     /db_xref="InterPro:IPR001191"
+                     /db_xref="InterPro:IPR001301"
+                     /db_xref="InterPro:IPR022690"
+                     /db_xref="InterPro:IPR022692"
+                     /db_xref="UniProtKB/TrEMBL:Q8JJT7"
+                     /translation="MPRLFKIYAKNYFLTYPNCSLSKEEALSQLKNLETPTNKKYIKV
+                     CRELHENGEPHLHVLIQFEGKYQCKNQRFFDLVSPNRSAHFHPNIQAAKSSTDVKTYV
+                     EKDGDFIDFGVFQIDGRSARGGQQSANDAYAEALNSGNKSEALNILKEKAPKDYILQF
+                     HNLSSNLDRIFSPPLEVYVSPFLSSSFNQVPDELEEWVAENVVSSAARPWRPNSIVIE
+                     GDSRTGKTMWARSLGPHNYLCGHLDLSPKVYSNDAWYNVIDDVDPHYLKHFKEFMGAQ
+                     RDWQSNTKYGKPIQIKGGIPTIFLCNPGPTSSYREYLDEEKNISLKNWALKNATFVTL
+                     YEPLFASINQGPTQDSQEETNKA"
+     gene            complement(2178..2471)
+                     /gene="c4"
+     CDS             complement(2178..2471)
+                     /gene="c4"
+                     /codon_start=1
+                     /product="C4 protein"
+                     /protein_id="CAD33252.1"
+                     /db_xref="InterPro:IPR002488"
+                     /db_xref="UniProtKB/TrEMBL:Q8JJT6"
+                     /translation="MGNHISMCLSNSKANTNVRTNGSSTWYPQTDQHISIRTFRQLRA
+                     QQMSRPTWRKTETSLILEFSKSMADQLEEVSNLPTTHMPKHSIQAINPRPSIY"
+ORIGIN      
+        1 taatattacc ggatggccgc gccttttcct tttatgtggt ccccacgagg gttccacaga
+       61 cgtcactgtc aaccaatcaa attgcatact caaacgttaa ataagtgttc atttgtcttt
+      121 atatacttgg tccccaagta ttttgtcttg caatatgtgg gacccacttc taaatgaatt
+      181 tcctgaatct gttcacggat ttcgttgtat gttagctatt aaatatttgc agtccgttga
+      241 ggaaacttac gagcccaata cattgggcca cgatttaatt agggatctta tatctgttgt
+      301 aagggcccgt gactatgtcg aagcgaccag gcgatataat catttccacg cccgtctcga
+      361 aggttcgccg aaggctgaac ttcgacagcc catacagcag ccgtgctgct gtccccattg
+      421 tccaaggcac aaacaagcga cgatcatgga cgtacaggcc catgtaccga aagcccagaa
+      481 tatacagaat gtatcgaagc cctgatgttc cccgtggatg tgaaggccca tgtaaagtcc
+      541 agtcttatga gcaacgggat gatattaagc acactggtat tgttcgttgt gttagtgatg
+      601 ttactcgtgg atctggaatt actcacagag tgggtaagag gttctgtgtt aaatcgatat
+      661 attttttagg taaagtctgg atggatgaaa atatcaagaa gcagaatcac actaatcagg
+      721 tcatgttctt tttggtccgt gatagaaggc cctatggaag cagcccaatg gattttggac
+      781 aggtttttaa tatgttcgat aatgagccca gtaccgcaac cgtgaagaat gatttgcgtg
+      841 ataggtttca agtgatgaga aaatttcatg caacagttat tggtgggccc tctggaatga
+      901 aggaacaggc attagttaag agatttttta aaattaacag tcatgtaact tataatcatc
+      961 aggaggcagc caagtacgag aaccatactg aaaacgcctt gttattgtat atggcatgta
+     1021 cgcatgcctc taatccagtg tatgtaacta tgaaaatacg catctatttc tatgattcaa
+     1081 tatcaaatta ataaaattta tattttatat catgagtttc tgttacattt attgtgtttt
+     1141 caagtacatc atacaataca tgatcaactg ctctgattac attgttaatg gaaattacac
+     1201 caagactatc taaatactta agaacttcat atctaaatac tcttaagaaa tgaccagtct
+     1261 gaggctgtaa tgtcgtccaa attcggaagt tgagaaaaca tttgtgaatc cccattacct
+     1321 tcctgatgtt gtggttgaat cttatctgaa tggaaatgat gtcgtggttc attagaaatg
+     1381 gccgctggct gtgttctgtt atcttgaaat agaggggatt gtttatctcc caaataaaaa
+     1441 cgccattctc tgcctgagga gcagtgatga gttcccctgt gcgtgaatcc atgattgttg
+     1501 cagttgaggt ggaggtagta tgagcagcca cagtctaggt ctacacgctt acgccttatt
+     1561 ggtttcttct tggctatctt gtgttggacc ttgattgata cttgcgaaca gtggctcgta
+     1621 gagggtgacg aaggttgcat tcttgagcgc ccaatttttc aaggatatat ttttttcttc
+     1681 gtctagatat tccctatatg aggaggtagg tcctggattg cagaggaaga tagtgggaat
+     1741 tcccccttta atttgaatgg gcttcccgta ctttgtgttg ctttgccagt ccctctgggc
+     1801 ccccatgaat tccttgaagt gctttaaata atgcgggtct acgtcatcaa tgacgttgta
+     1861 ccacgcatca ttactgtaca cctttgggct taggtctaga tgtccacata aataattatg
+     1921 tgggcctaga gacctggccc acattgtttt gcctgttctg ctatcaccct caatgacaat
+     1981 actattaggt ctccatggcc gcgcagcgga agacacgacg ttctcagcga cccactcttc
+     2041 aagttcatct ggaacttgat taaaagaaga agaaagaaat ggagaaacat aaacttctaa
+     2101 aggaggacta aaaatcctat ctaaatttga acttaaatta tgaaattgta aaatatagtc
+     2161 ctttggggcc ttctctttta atatattgag ggcctcggat ttattgcctg aattgagtgc
+     2221 ttcggcatat gcgtcgttgg cagattgctg acctcctcta gctgatctgc catcgatttg
+     2281 gaaaactcca aaatcaatga agtctccgtc tttctccacg taggtcttga catctgttga
+     2341 gctcttagct gcctgaatgt tcggatggaa atgtgctgat ctgtttgggg ataccaggtc
+     2401 gaagaaccgt tggttcttac attggtattt gccttcgaat tggataagca catggagatg
+     2461 tggttcccca ttctcgtgga gttctctgca aactttgatg tattttttat ttgttggggt
+     2521 ttctaggttt tttaattggg aaagtgcttc ctctttagag agagaacaat tgggatatgt
+     2581 taggaaataa tttttggcat atattttaaa taaacgaggc atgttgaaat gaatcggtgt
+     2641 ccctcaaagc tctatggcaa tcggtgtatc ggtgtcttat ttatacctgg acacctaatg
+     2701 gctatttggt aatttcgtaa aagtacattg caattcaaaa ttcaaaattc aaaaatcaaa
+     2761 tcattaaagc ggccatccgt a
+//
+

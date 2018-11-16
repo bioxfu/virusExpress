@@ -48,3 +48,12 @@ snakemake --unlock
 ./clean.sh
 ```
 
+### 8. Draw CGView figures
+```
+# install CGView
+# wget http://wishart.biology.ualberta.ca/cgview/application/cgview.zip
+unzip cgview.zip
+
+cp example/CGView.sh CGView.sh
+# edit CGView.sh and run
+```
