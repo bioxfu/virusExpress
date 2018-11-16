@@ -54,7 +54,7 @@ rule bam_fwd_cov:
 	params:
 		conda = config['conda_path']
 	shell:
-		'{params.conda}/samtools view -hub -F 16 {input.bam}|samtools depth -d 1000000 - > {output.cov}'
+		'{params.conda}/samtools view -hub -F 16 {input.bam}|samtools depth -d 8000 - > {output.cov}'
 
 rule bam_rev_cov:
 	input:
@@ -64,7 +64,7 @@ rule bam_rev_cov:
 	params:
 		conda = config['conda_path']
 	shell:
-		'{params.conda}/samtools view -hub -f 16 {input.bam}|samtools depth -d 1000000 - > {output.cov}'
+		'{params.conda}/samtools view -hub -f 16 {input.bam}|samtools depth -d 8000 - > {output.cov}'
 
 rule bam_count:
 	input:
