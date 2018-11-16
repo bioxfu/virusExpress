@@ -5,6 +5,7 @@ rule all:
 		expand('index/{viral}.fasta.1.ht2', viral=config['viral']),
 		expand('bam/{sample}.bam', sample=config['samples']),
 		expand('bam/{sample}.bam.bai', sample=config['samples']),
+		expand('bam/{sample}.bam.cov', sample=config['samples']),
 		expand('count/{sample}.cnt', sample=config['samples']),
 		'table/virus_expression_RPKM.tsv',
 		'table/virus_expression_RPM.tsv'
@@ -43,6 +44,16 @@ rule bam_idx:
 		conda = config['conda_path']
 	shell:
 		'{params.conda}/samtools index {input.bam} {output.bai}'
+
+rule bam_cov:
+	input:
+		bam = 'bam/{sample}.bam'
+	output:
+		cov = 'bam/{sample}.bam.cov'
+	params:
+		conda = config['conda_path']
+	shell:
+		'{params.conda}/samtools depth {input.bam} > {output.cov}'
 
 rule bam_count:
 	input:
