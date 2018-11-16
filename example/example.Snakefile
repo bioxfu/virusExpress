@@ -7,6 +7,7 @@ rule all:
 		expand('bam/{sample}.bam.bai', sample=config['samples']),
 		expand('bam/{sample}.fwd.cov', sample=config['samples']),
 		expand('bam/{sample}.rev.cov', sample=config['samples']),
+		expand('track/{sample}.expr_track', sample=config['samples']),
 		expand('count/{sample}.cnt', sample=config['samples']),
 		'table/virus_expression_RPKM.tsv',
 		'table/virus_expression_RPM.tsv'
@@ -88,3 +89,14 @@ rule RPKM:
 		Rscript = config['Rscript_path']
 	shell:
 		"{params.Rscript} script/RPKM.R {params.bamstat}"
+
+rule expr_track:
+	input:
+		fwd = 'bam/{sample}.fwd.cov',
+		rev = 'bam/{sample}.rev.cov'
+	output:
+		track = 'track/{sample}.expr_track'
+	params:
+		conda = config['conda_path']
+	shell:
+		' python script/cal_expr_track.py {input.fwd} {input.rev} {output.track}'
