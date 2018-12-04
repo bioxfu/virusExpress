@@ -5,12 +5,19 @@ rule all:
 		expand('index/{viral}.fasta.1.ht2', viral=config['viral']),
 		expand('bam/{sample}.bam', sample=config['samples']),
 		expand('bam/{sample}.bam.bai', sample=config['samples']),
-		expand('bam/{sample}.fwd.cov', sample=config['samples']),
-		expand('bam/{sample}.rev.cov', sample=config['samples']),
+		expand('fwd/{sample}.fwd.bam', sample=config['samples']),
+		expand('fwd/{sample}.fwd.bam.bai', sample=config['samples']),
+		expand('rev/{sample}.rev.bam', sample=config['samples']),
+		expand('rev/{sample}.rev.bam.bai', sample=config['samples']),
+		expand('fwd/{sample}.fwd.cov', sample=config['samples']),
+		expand('rev/{sample}.rev.cov', sample=config['samples']),
 		expand('track/{sample}.expr_track', sample=config['samples']),
 		expand('count/{sample}.cnt', sample=config['samples']),
-		'table/virus_expression_RPKM.tsv',
-		'table/virus_expression_RPM.tsv'
+		expand('fwd/{sample}.fwd.cnt', sample=config['samples']),
+		expand('rev/{sample}.rev.cnt', sample=config['samples']),
+		'table/virus_expression_RPM.tsv',
+		'table/virus_expression_RPM_fwd.tsv',
+		'table/virus_expression_RPM_rev.tsv',
 
 rule build_index:
 	input:
@@ -47,11 +54,33 @@ rule bam_idx:
 	shell:
 		'{params.conda}/samtools index {input.bam} {output.bai}'
 
+rule bam_fwd_bam:
+	input:
+		bam = 'bam/{sample}.bam'
+	output:
+		bam = 'fwd/{sample}.fwd.bam',
+		bai = 'fwd/{sample}.fwd.bam.bai'	
+	params:
+		conda = config['conda_path']
+	shell:
+		'{params.conda}/samtools view -hub -F 16 {input.bam} > {output.bam}; {params.conda}/samtools index {output.bam} {output.bai}'
+
+rule bam_rev_bam:
+	input:
+		bam = 'bam/{sample}.bam'
+	output:
+		bam = 'rev/{sample}.rev.bam',
+		bai = 'rev/{sample}.rev.bam.bai'
+	params:
+		conda = config['conda_path']
+	shell:
+		'{params.conda}/samtools view -hub -f 16 {input.bam} > {output.bam}; {params.conda}/samtools index {output.bam} {output.bai}'
+
 rule bam_fwd_cov:
 	input:
 		bam = 'bam/{sample}.bam'
 	output:
-		cov = 'bam/{sample}.fwd.cov'
+		cov = 'fwd/{sample}.fwd.cov'
 	params:
 		conda = config['conda_path']
 	shell:
@@ -61,7 +90,7 @@ rule bam_rev_cov:
 	input:
 		bam = 'bam/{sample}.bam'
 	output:
-		cov = 'bam/{sample}.rev.cov'
+		cov = 'fwd/{sample}.rev.cov'
 	params:
 		conda = config['conda_path']
 	shell:
@@ -78,12 +107,55 @@ rule bam_count:
 	shell:
 		"{params.conda}/samtools idxstats {input.bam}|grep -v '*'|cut -f1-3 > {output}"
 
+rule bam_count_fwd:
+	input:
+		bam = 'fwd/{sample}.fwd.bam',
+		bai = 'fwd/{sample}.fwd.bam.bai'
+	output:
+		'fwd/{sample}.fwd.cnt'
+	params:
+		conda = config['conda_path']
+	shell:
+		"{params.conda}/samtools idxstats {input.bam}|grep -v '*'|cut -f1-3 > {output}"
+
+rule bam_count_rev:
+	input:
+		bam = 'rev/{sample}.rev.bam',
+		bai = 'rev/{sample}.rev.bam.bai'
+	output:
+		'rev/{sample}.rev.cnt'
+	params:
+		conda = config['conda_path']
+	shell:
+		"{params.conda}/samtools idxstats {input.bam}|grep -v '*'|cut -f1-3 > {output}"
+
 rule RPKM:
 	input:
 		['count/{sample}.cnt'.format(sample=x) for x in config['samples']]
 	output:
-		'table/virus_expression_RPKM.tsv',
 		'table/virus_expression_RPM.tsv'
+	params:
+		bamstat = config['path']+'/stat/bamqc_stat.tsv',
+		Rscript = config['Rscript_path']
+	shell:
+		"{params.Rscript} script/RPKM.R {params.bamstat}"
+
+rule RPKM_fwd:
+	input:
+		['fwd/{sample}.fwd.cnt'.format(sample=x) for x in config['samples']]
+	output:
+		'table/virus_expression_RPM_fwd.tsv'
+	params:
+		bamstat = config['path']+'/stat/bamqc_stat.tsv',
+		Rscript = config['Rscript_path']
+	shell:
+		"{params.Rscript} script/RPKM.R {params.bamstat}"
+
+rule RPKM_rev:
+	input:
+		['rev/{sample}.rev.cnt'.format(sample=x) for x in config['samples']]
+	output:
+		'table/virus_expression_RPM_rev.tsv'
 	params:
 		bamstat = config['path']+'/stat/bamqc_stat.tsv',
 		Rscript = config['Rscript_path']
@@ -92,8 +164,8 @@ rule RPKM:
 
 rule expr_track:
 	input:
-		fwd = 'bam/{sample}.fwd.cov',
-		rev = 'bam/{sample}.rev.cov'
+		fwd = 'fwd/{sample}.fwd.cov',
+		rev = 'rev/{sample}.rev.cov'
 	output:
 		track = 'track/{sample}.expr_track'
 	params:
