@@ -149,7 +149,7 @@ rule RPKM_fwd:
 		bamstat = config['path']+'/stat/bamqc_stat.tsv',
 		Rscript = config['Rscript_path']
 	shell:
-		"{params.Rscript} script/RPKM.R {params.bamstat}"
+		"{params.Rscript} script/RPKM_fwd.R {params.bamstat}"
 
 rule RPKM_rev:
 	input:
@@ -160,7 +160,7 @@ rule RPKM_rev:
 		bamstat = config['path']+'/stat/bamqc_stat.tsv',
 		Rscript = config['Rscript_path']
 	shell:
-		"{params.Rscript} script/RPKM.R {params.bamstat}"
+		"{params.Rscript} script/RPKM_rev.R {params.bamstat}"
 
 rule expr_track:
 	input:
